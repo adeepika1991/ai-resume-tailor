@@ -1,35 +1,28 @@
-# Next.js 15 Starter Template
+# 🧠 AI Resume Tailor
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Build Status](https://github.com/adeepika1991/nextjs-starter-repo/actions/workflows/main.yml/badge.svg)](https://github.com/adeepika1991/nextjs-starter-repo/actions/workflows/main.yml)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-blue?logo=tailwind-css)](https://tailwindcss.com/)
-[![Prisma](https://img.shields.io/badge/Prisma-5-blueviolet?logo=prisma)](https://www.prisma.io/)
-[![TanStack Query](https://img.shields.io/badge/TanStack_Query-5.0-orange?logo=react-query)](https://tanstack.com/query/latest)
-[![Zustand](https://img.shields.io/badge/Zustand-4.4-yellow?logo=zustand)](https://zustand-demo.pmnd.rs/)
+**AI-powered resume enhancement tool** that helps job seekers tailor their resumes to specific job descriptions using OpenAI's function calling.
 
-A **minimal, modern starter template** for full-stack Next.js 15+ projects with:
+## 🚀 Features
 
-- ✅ `src/` directory structure (clean separation of concerns)
-- 🎨 Tailwind CSS preconfigured (v3.4+)
-- 🔮 React 19 support (Client + Server Components)
-- 🧠 [Zustand](https://zustand-demo.pmnd.rs/) for global state management (simple, scalable)
-- 🧠 [TanStack Query](https://tanstack.com/query/latest) ready for async data and caching
-- 🧩 Prisma ORM with `prisma/` folder and `.env.example`
-- 🛠️ Path aliasing with `@/` via `tsconfig.json`
-- 🧼 `.gitignore` and sensible project defaults
-- 🧱 App Router with layout and example page (no pages directory)
+- ✍️ **Paste Resume** — Upload or paste your existing resume
+- 📄 **Paste Job Description** — Provide the target job description
+- 🤖 **AI Tailoring Suggestions**:
+  - Bullet point rewrites aligned with the job
+  - Missing keywords to include
+  - Key skills to highlight
+  - Side project suggestions (with title, description, tech stack)
+- 💡 Optional: Save project ideas (login required)
 
----
+## 🛠️ Tech Stack
 
-## 🚀 Quickstart: Scaffold a New Project
+- **Frontend**: Next.js, Tailwind CSS, Zustand
+- **Backend**: Next.js API Routes, Prisma ORM, PostgreSQL
+- **AI**: OpenAI API (with function calling)
+- **Deployment**: Vercel
 
-You can use [`degit`](https://github.com/adeepika1991/degit) to copy this repo without Git history:
+## 📦 Setup
 
-```bash
-npx degit adeepika1991/nextjs-starter-repo my-new-project
-cd my-new-project
-npm install
-cp .env.example .env
-npm run dev
+1. Clone the repo
+2. Install dependencies:  
+   ```bash
+   npm install
