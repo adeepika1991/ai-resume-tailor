@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useResumeStore } from "@/store/useResumeStore";
+import { useAnalyze } from "@/hooks/useAnalyze";
 
 const TONE_OPTIONS = ["Professional", "Impact-Oriented", "Friendly", "Enthusiastic"];
 
@@ -14,6 +15,7 @@ export default function ResumeForm() {
     setJobDescription,
     setTones,
   } = useResumeStore();
+  const { mutateAsync, isPending } = useAnalyze(true); // useMock = true
   const [selectedTones, setSelectedTones] = useState<string[]>(tones);
   const [errors, setErrors] = useState<{
     resume?: string;
@@ -45,7 +47,7 @@ export default function ResumeForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: { resume?: string; jobDescription?: string } = {};
 
@@ -58,19 +60,31 @@ export default function ResumeForm() {
     if (!jobDescription || jobDescription.trim().length < 100) {
       newErrors.jobDescription =
         "Job description must be at least 100 characters.";
-    } else if (jobDescription.length > 3000) {
+    } else if (jobDescription.length > 5000) {
       newErrors.jobDescription =
-        "Job description must be less than 3000 characters.";
+        "Job description must be less than 5000 characters.";
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // ✅ No errors — call API or navigate
-      console.log("Submitting...");
-      // Example: router.push("/results");
-    }
+        try {
+          const response = await mutateAsync({
+            resume,
+            jobDescription,
+            tones: selectedTones,
+          });
+          console.log("Result:", response.result);
+          // router.push("/results")
+        } catch (err) {
+          console.error("Analyze failed", err);
+        }
+      }
   };
+
+  if (isPending) {
+    return "Processing your Resume....";
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto p-4">
