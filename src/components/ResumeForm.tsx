@@ -1,24 +1,75 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useResumeStore } from "@/store/useResumeStore";
 
-const TONE_OPTIONS = ["Professional", "Impact-Oriented", "Friendly", "Formal"];
+const TONE_OPTIONS = ["Professional", "Impact-Oriented", "Friendly", "Enthusiastic"];
 
 export default function ResumeForm() {
-  const { resume, jobDescription, tones, setResume, setJobDescription, setTones } = useResumeStore();
+  const {
+    resume,
+    jobDescription,
+    tones,
+    setResume,
+    setJobDescription,
+    setTones,
+  } = useResumeStore();
   const [selectedTones, setSelectedTones] = useState<string[]>(tones);
+  const [errors, setErrors] = useState<{
+    resume?: string;
+    jobDescription?: string;
+  }>({});
+
+  useEffect(() => {
+    setTones(selectedTones);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTones]);
 
   const toggleTone = (tone: string) => {
-    setSelectedTones(prev =>
-      prev.includes(tone) ? prev.filter(t => t !== tone) : [...prev, tone]
+    setSelectedTones((prev) =>
+      prev.includes(tone) ? prev.filter((t) => t !== tone) : [...prev, tone]
     );
-    setTones(selectedTones);
+  };
+
+  const handleResumeChange = (text: string) => {
+    setResume(text);
+    if (text.length >= 100 && text.length <= 5000) {
+      setErrors((prev) => ({ ...prev, resume: undefined }));
+    }
+  };
+  
+  const handleJobDescriptionChange = (text: string) => {
+    setJobDescription(text);
+    if (text.length >= 100 && text.length <= 3000) {
+      setErrors((prev) => ({ ...prev, jobDescription: undefined }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Call API or navigate to results page here
+    const newErrors: { resume?: string; jobDescription?: string } = {};
+
+    if (!resume || resume.trim().length < 100) {
+      newErrors.resume = "Resume must be at least 100 characters.";
+    } else if (resume.length > 5000) {
+      newErrors.resume = "Resume must be less than 5000 characters.";
+    }
+
+    if (!jobDescription || jobDescription.trim().length < 100) {
+      newErrors.jobDescription =
+        "Job description must be at least 100 characters.";
+    } else if (jobDescription.length > 3000) {
+      newErrors.jobDescription =
+        "Job description must be less than 3000 characters.";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      // ✅ No errors — call API or navigate
+      console.log("Submitting...");
+      // Example: router.push("/results");
+    }
   };
 
   return (
@@ -26,23 +77,33 @@ export default function ResumeForm() {
       <label>
         Resume (paste text):
         <textarea
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded-2xl"
           value={resume}
-          onChange={(e) => setResume(e.target.value)}
           rows={10}
+          onChange={(e) => handleResumeChange(e.target.value)}
           placeholder="Paste your resume text here..."
         />
+        <div className="min-h-[1.5rem] text-sm text-red-600">
+          {errors.resume && (
+            <p className="text-red-600 text-sm">{errors.resume}</p>
+          )}
+        </div>
       </label>
 
       <label>
         Job Description:
         <textarea
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded-2xl"
           value={jobDescription}
-          onChange={(e) => setJobDescription(e.target.value)}
           rows={6}
+          onChange={(e) => handleJobDescriptionChange(e.target.value)}
           placeholder="Paste the job description here..."
         />
+        <div className="min-h-[1.5rem] text-sm text-red-600">
+          {errors.jobDescription && (
+            <p className="text-red-600 text-sm">{errors.jobDescription}</p>
+          )}
+        </div>
       </label>
 
       <fieldset>
