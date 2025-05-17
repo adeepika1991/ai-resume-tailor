@@ -15,7 +15,7 @@ Your task is to:
 
 Return a response in **this format**:
 
-## Resume Match Score: 
+# [Resume Match Score: ]
 (Return the score as to how does the existing resume matches with the Job description. out of 100)
 
 ---
@@ -43,6 +43,17 @@ Target sections:
 3. Technical Skills
 4. Education
 5. Projects (optional if not present)
+(if Project section not present. Recommend mini Projects based on the Domain and Tech Stack from Job Description.
+Return project recommendation **this format**:)
+
+### 1. [Project Name]
+**Title: **
+(Original text or summary of the recommended Project in 2 lines)
+
+(Tech Stack needed **in this format**)
+`techStack1` `techStack2` (whatever is needed)
+
+
 
 Keep tone adjustments in mind: {{tone}}.
 
