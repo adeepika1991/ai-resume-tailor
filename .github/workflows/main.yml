@@ -17,3 +17,6 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+        env:
+          OPENAI_API_KEY: dummy  # <-- satisfies the package check
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
