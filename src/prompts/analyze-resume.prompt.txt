@@ -5,8 +5,9 @@ Your task is to:
 1. Score the resume out of 100 based on how well it matches the JD.
 2. Highlight adjustments needed in key sections.
 3. Provide before/after versions, and a "why".
-4. Suggest relevant project ideas (if missing).
-5. Include final formatting or tone tips.
+4. Keyword recommendation
+5. Suggest relevant project ideas (if missing).
+6. Include final formatting or tone tips.
 
 ## Format your response in **Markdown**, using:
 
@@ -43,6 +44,8 @@ Only include the actual resume and job description at the bottom.
 
 **Why**  
 (Reasoning)
+
+**Keyword Recommendation**
 
 (Repeat as needed)
 
