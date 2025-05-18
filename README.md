@@ -1,28 +1,39 @@
-# 🧠 AI Resume Tailor
+# 🎯 AI Resume Tailor
 
-**AI-powered resume enhancement tool** that helps job seekers tailor their resumes to specific job descriptions using OpenAI's function calling.
+A sleek AI-powered web app that tailors your resume to match a job description using OpenAI's API. Paste your resume and job description, select a tone, and get a fully analyzed, rephrased, and keyword-aligned version — all in seconds.
 
-## 🚀 Features
+[🔗 Live Site](https://ai-resume-tailor-hazel.vercel.app/)
 
-- ✍️ **Paste Resume** — Upload or paste your existing resume
-- 📄 **Paste Job Description** — Provide the target job description
-- 🤖 **AI Tailoring Suggestions**:
-  - Bullet point rewrites aligned with the job
-  - Missing keywords to include
-  - Key skills to highlight
-  - Side project suggestions (with title, description, tech stack)
-- 💡 Optional: Save project ideas (login required)
+---
 
-## 🛠️ Tech Stack
+## 📸 Demo
 
-- **Frontend**: Next.js, Tailwind CSS, Zustand
-- **Backend**: Next.js API Routes, Prisma ORM, PostgreSQL
-- **AI**: OpenAI API (with function calling)
-- **Deployment**: Vercel
+<!-- Replace with your Loom or GIF link -->
 
-## 📦 Setup
+---
 
-1. Clone the repo
-2. Install dependencies:  
-   ```bash
-   npm install
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 15 (App Router, Server Actions)](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **State Management:** [Zustand](https://github.com/pmndrs/zustand)
+- **AI Integration:** [OpenAI SDK (function calling)](https://platform.openai.com/)
+- **MDX Rendering:** `next-mdx-remote`
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## ✅ Build Status
+
+[![Vercel](https://vercelbadge.vercel.app/api/user/project)](https://ai-resume-tailor-hazel.vercel.app/)
+[![CI Tests](https://github.com/your-username/ai-resume-tailor/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/ai-resume-tailor/actions)
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/ai-resume-tailor.git
+cd ai-resume-tailor
