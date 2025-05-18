@@ -8,7 +8,6 @@ datasource db {
   directUrl = env("DIRECT_URL")     // used by migrations and introspection
 }
 
-
 model TestItem {
   id        String   @id @default(uuid())
   name      String

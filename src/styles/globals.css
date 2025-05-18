@@ -1,1 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* rest of your global styles go here */
+
 @import "tailwindcss";
+
+@keyframes wiggle {
+    0%, 100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  html, body {
+    overscroll-behavior: none;
+    scroll-behavior: smooth;
+    @apply bg-gradient-to-b from-[#0f172a] to-[#0f1b2f] text-white min-h-screen;
+  }
+  
