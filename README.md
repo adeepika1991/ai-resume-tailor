@@ -23,13 +23,6 @@ A sleek AI-powered web app that tailors your resume to match a job description u
 
 ---
 
-## ✅ Build Status
-
-[![Vercel](https://vercelbadge.vercel.app/api/user/project)](https://ai-resume-tailor-hazel.vercel.app/)
-[![CI Tests](https://github.com/your-username/ai-resume-tailor/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/ai-resume-tailor/actions)
-
----
-
 ## 🛠️ Getting Started
 
 ### 1. Clone the repository
