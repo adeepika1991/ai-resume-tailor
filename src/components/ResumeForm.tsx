@@ -4,7 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useResumeStore } from "@/store/useResumeStore";
 import { useAnalyze } from "@/hooks/useAnalyze";
 
-const TONE_OPTIONS = ["Professional", "Impact-Oriented", "Friendly", "Enthusiastic"];
+const TONE_OPTIONS = [
+  "Professional",
+  "Impact-Oriented",
+  "Friendly",
+  "Enthusiastic",
+];
 
 export default function ResumeForm() {
   const {
@@ -15,7 +20,7 @@ export default function ResumeForm() {
     setJobDescription,
     setTones,
   } = useResumeStore();
-  const { mutateAsync, isPending } = useAnalyze(true); // useMock = true
+  const { mutateAsync, isPending, isError } = useAnalyze(true); // useMock = true
   const [selectedTones, setSelectedTones] = useState<string[]>(tones);
   const [errors, setErrors] = useState<{
     resume?: string;
@@ -39,7 +44,7 @@ export default function ResumeForm() {
       setErrors((prev) => ({ ...prev, resume: undefined }));
     }
   };
-  
+
   const handleJobDescriptionChange = (text: string) => {
     setJobDescription(text);
     if (text.length >= 100 && text.length <= 3000) {
@@ -47,7 +52,7 @@ export default function ResumeForm() {
     }
   };
 
-  const handleSubmit = async(e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: { resume?: string; jobDescription?: string } = {};
 
@@ -68,23 +73,13 @@ export default function ResumeForm() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-        try {
-          const response = await mutateAsync({
-            resume,
-            jobDescription,
-            tones: selectedTones,
-          });
-          console.log("Result:", response.result);
-          // router.push("/results")
-        } catch (err) {
-          console.error("Analyze failed", err);
-        }
-      }
+      // Everything is valid — navigate to result page
+      mutateAsync({ resume, jobDescription, tones });
+    }
   };
 
-  if (isPending) {
-    return "Processing your Resume....";
-  }
+  if (isPending) return <p>Crafting your resume...</p>;
+  if (isError) return <p className="text-red-500">Something went wrong.</p>;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto p-4">
