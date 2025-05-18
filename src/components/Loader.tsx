@@ -2,7 +2,7 @@
 
 export default function Loader() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 p-6">
+    <div className="h-screen w-full flex flex-col items-center justify-center gap-4 p-6">
       <svg
         className="w-24 h-24 motion-safe:animate-[wiggle_1.2s_ease-in-out_infinite]"
         fill="none"
