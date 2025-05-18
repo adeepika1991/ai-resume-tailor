@@ -5,7 +5,7 @@ Your task is to:
 1. Score the resume out of 100 based on how well it matches the JD.
 2. Highlight adjustments needed in key sections.
 3. Provide before/after versions, and a "why".
-4. Keyword recommendation
+4. Recommend Resume Power verbs
 5. Suggest relevant project ideas (if missing).
 6. Include final formatting or tone tips.
 
